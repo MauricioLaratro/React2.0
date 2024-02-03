@@ -3,11 +3,11 @@ import { HomePage } from "./HomePage"
 import { LoginPage } from "./LoginPage"
 import { AboutPage } from "./AboutPage"
 import { Navbar } from "./Navbar"
+import { UserProvider } from "./context/UserProvider"
 
 export const MainApp = () => {
   return (
-    <>
-        <h1>MainApp</h1>
+    <UserProvider>
         <Navbar/>
         <hr />
 
@@ -23,6 +23,6 @@ export const MainApp = () => {
             {/* Esto es lo mismo que lo de arriba pero al utilizar navigate lo que sucede es que al intentar navegar a esa ruta no especificada o inexistente, redirije al aboutpage en este caso y tambien CAMBIA el path al del about, ya que en el ejemplo anterior, esa ruta inexistente se mantiene aunque se muestra la vista del aboutpage */}
 
         </Routes>
-    </>
+    </UserProvider>
   )
 }

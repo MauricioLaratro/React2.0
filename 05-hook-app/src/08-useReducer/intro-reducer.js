@@ -13,7 +13,7 @@ const todoReducer = ( state = initialState, action = {} ) => {
     if ( action.type === '[TODO] add todo' ){
         return [ ...state, action.payload ]
     }
-    // Esto quiere decir que si el action type es igual al del agregar un todo, devuelva un nuevo arreglo, con la desestructuración del estado antedior mas el payload, que es el agregado del nuevo todo.
+    // Esto quiere decir que si el action type es igual al del agregar un todo, devuelva un nuevo arreglo, con la desestructuración del estado anterior mas el payload, que es el agregado del nuevo todo.
 
     return state
 }
