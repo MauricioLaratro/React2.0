@@ -8,6 +8,7 @@ export const TodoItem = ({ todo, index, onDeleteTodo, onToggleTodo, onProgressTo
                 className={ `align-self-center ${ (todo.done) ? 'text-decoration-line-through' : '' }` }
                 // en el classname indicamos que si todo.done es true se agregue el tachado con el operador ternario, de lo contrario que agregue una clase vacia.
                 // onClick={ () => onToggleTodo( todo.id ) }
+                aria-label="span"
             >
                 { index + 1}. { todo.description }
             </span>
@@ -16,6 +17,7 @@ export const TodoItem = ({ todo, index, onDeleteTodo, onToggleTodo, onProgressTo
                 <button
                     className={`btn ${ (todo.done) ? 'btn-secondary' : 'btn-success' }`} 
                     onClick={ () => onToggleTodo( todo.id ) }
+                    aria-label="button-toggle"
                     >
                         Done
                 </button>
@@ -29,6 +31,7 @@ export const TodoItem = ({ todo, index, onDeleteTodo, onToggleTodo, onProgressTo
                 <button
                     className="btn btn-danger" 
                     onClick={ () => onDeleteTodo( todo.id ) }
+                    aria-label="button-delete"
                     >
                         X
                 </button>
