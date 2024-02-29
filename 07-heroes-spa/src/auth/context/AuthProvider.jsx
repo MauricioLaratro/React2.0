@@ -5,20 +5,20 @@ import { AuthContext } from './AuthContext'
 import { authReducer } from './authReducer'
 import { types } from '../types/types'
 
-export const AuthProvider = ({ children }) => {
 
-
-    // Esta funcion lo que hara es que aunque se recargue el navegador, los datos del user prevaleceran, es decir se seguira mostrando "Mauricio Laratro" en el Navbar, porque lo que hace es obtener los datos del usuario que se encuentran almacenados en el LocalStorage, por el handleLogin
-    const init = () => {
-        // Almacenamos el user como un json
-        const user = JSON.parse( localStorage.getItem('user') );
-
-        // Indicamos que la funcion debe de retornar, que si el usuario existe, cambiar el logged a true (Por eso la doble negación, que quiere decir que es true, en el caso de que no sea null el user) y luego retornamos la info del user como tal, es decir le JSON
-        return{
-            logged: !!user,
-            user: user,
-        }
+// Esta funcion lo que hara es que aunque se recargue el navegador, los datos del user prevaleceran, es decir se seguira mostrando "Mauricio Laratro" en el Navbar, porque lo que hace es obtener los datos del usuario que se encuentran almacenados en el LocalStorage, por el handleLogin
+const init = () => {
+    // Almacenamos el user como un json
+    const user = JSON.parse( localStorage.getItem('user') );
+    
+    // Indicamos que la funcion debe de retornar, que si el usuario existe, cambiar el logged a true (Por eso la doble negación, que quiere decir que es true, en el caso de que no sea null el user) y luego retornamos la info del user como tal, es decir le JSON
+    return{
+        logged: !!user,
+        user: user,
     }
+
+}
+export const AuthProvider = ({ children }) => {
 
     // Utilizamos el hook useReducer al cual le pasamos nuestro reducer que maneja los types y las acciones del mismo y como segundo argumento le pasamos su estado inicial que es un objeto vacio.
     // al principio hacemos la desestructuración del state "authReducar" y la función para hacer el dispatch que es la funcion que permite actualizar el estado a un valor diferente y activar una nueva renderización.
@@ -52,7 +52,7 @@ export const AuthProvider = ({ children }) => {
   return (
     // Pasamos como value al provider, la funcion de handleLogin que creamos para manejar la action del login en el reducer. Y tambien le pasamos el authState para pasarle todo el estado actual del mismo
     <AuthContext.Provider value={{
-        authState,
+        ...authState,
         login: handleLogin,
         logout: handleLogout
     }}>

@@ -4,11 +4,11 @@ import { AuthContext } from "../context/AuthContext"
 
 export const LoginPage = () => {
 
-  // Custom Hook propio de React Router Dom para facilitar la configuracion de la navegación de nuestras App
-  const navigate = useNavigate()
-
   // Obtenemos acceso al contexto y mas especificamente la funcion del login (que es el mismo que colocamos en el value del provider en AuthProvider, es decir que su valor corresponder a la function de handleLogin), para poder hacer el dispatch al llamar a la funcion de onLogin que esta debajo y poder actualizar el estado del reducer.
   const { login } = useContext( AuthContext )
+  
+  // Custom Hook propio de React Router Dom para facilitar la configuracion de la navegación de nuestras App
+  const navigate = useNavigate()
 
   // Creamos la funcion que permita navegar hacia la raiz al precionar el boton de Login, utilizando el custom Hook de react router dom
   const onLogin = () => {

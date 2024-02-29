@@ -11,7 +11,7 @@ export const Navbar = () => {
     // Llamamos a nuestro conxteto de Auth, utilizando el hook de useContext y de el desestructuramos su estado acutal que es el authState (El mismo que pasamos como value del provider en AuthProvider.jsx)
     // Para poder establecer el name que se muestra en el navbar al loggear el usuario que es igual al authState.user.name
     // Tambien desestructuramos la funcion de logout del AuthContext para poder limpiar los datos almacenados del user, al presionar el boton de logout
-    const { authState, logout } = useContext( AuthContext )
+    const { logout, user } = useContext( AuthContext )
 
     // Creamos la funcion que permita navegar hacia el login al precionar el boton de Logout, utilizando el custom Hook de react router dom
     const onLogout = () => {
@@ -69,7 +69,7 @@ export const Navbar = () => {
 
                     <span className='nav-item nav-link text-primary'>
                         {/* Establecemos el nombre del usuario que se ha loggeeado, el cual lo obtuvimos de nuestro autContext (con interrogación al user porque en el caso de no exista el user, no nos de error al intentar leer un valor undefined y se rompa la App) */}
-                        {authState.user?.name}
+                        {user?.name}
                     </span>
 
                     <button

@@ -6,7 +6,7 @@ import { Navigate, useLocation } from "react-router-dom"
 export const PrivateRoute = ({ children }) => {
 
     // Obtenemos el estado de nuesto contexto
-    const { authState } = useContext( AuthContext )
+    const { logged } = useContext( AuthContext )
 
     // Utilizamos el hook de useLocation para recordar la ultima vista antes de que el usuario haga logout, para que cuando vuelva a hacer login, se muestre en donde se habia quedado el user.
     const { pathname, search } = useLocation()
@@ -15,7 +15,7 @@ export const PrivateRoute = ({ children }) => {
     localStorage.setItem('lastPath', lastPath)
 
     // Indicamos que si logged is true, se deben mostrar las rutas privadas, en el caso de que sea false, se redirecciona al usuario de manera automatica a la vista de login.
-  return (authState.logged)
+  return (logged)
     ? children
     : <Navigate to="/login" />
 }
